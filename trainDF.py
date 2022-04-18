@@ -1,6 +1,6 @@
 import pandas as pd
 
-class ColumnCollection():
+class TrainDF():
 
     def __init__(self, df):
         """"""
@@ -25,11 +25,18 @@ class ColumnCollection():
     def col2Array(self, col):
         """Column의 값들을 list로 return"""
         return list(self.df[col])
-        
-class matchingElement():
-    def __init__(self, df):
-        """"""
-        self.df = df
+
+    def file2Dict(self, cls_arr):
+        """file_name을 label별로 분류"""
+        file_dict = {}
+        for i in range(len(cls_arr)):
+            idx = self.df.index[(self.df['class'] == cls_arr[i])]
+            cls_df = self.df.loc[idx]
+            labelList = list(set(cls_df['label']))
+            for state in labelList:
+                idx = cls_df.index[(cls_df['label'] == state)]
+                file_dict[state] = cls_df.loc[idx]['file_name'].tolist()
+        return file_dict
 
     def rowElement(self, element, dimension = True):
         """
@@ -40,3 +47,4 @@ class matchingElement():
             return self.df.loc[element]
         else:
             return self.df.loc[[element]]
+    
