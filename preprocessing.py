@@ -19,6 +19,8 @@ state_dict = td.col2Dict(state_col)
 label_dict = td.col2Dict(label_col)
 
 img_file = td.file2Dict(cls_arr, True)
+one_img_file = td.file2Dict(cls_arr, False)
 
 si = SamplingImage('../data/train/')
-si.imgSave(cls_arr, img_file)
+si.imgSave('../data/label_train/', cls_arr, img_file)
+si.imgSave('./label_train/', cls_arr, one_img_file)

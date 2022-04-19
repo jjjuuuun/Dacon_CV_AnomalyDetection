@@ -27,7 +27,7 @@ class SamplingImage():
             plt.tight_layout()
             plt.show()
 
-    def imgSave(self, cls_arr, arr_dict):
+    def imgSave(self, make_path, cls_arr, arr_dict):
         """"""
         for idx in range(len(cls_arr)):
             img_dict = arr_dict[cls_arr[idx]]
@@ -35,7 +35,7 @@ class SamplingImage():
             for state_key in key:
                 value = img_dict[state_key]
                 for i in range(len(value)):
-                    img_path = '../data/label_train/' + cls_arr[idx] + '/'
+                    img_path = make_path + cls_arr[idx] + '/'
                     title = state_key
                     img_name = value[i]
                     try:
