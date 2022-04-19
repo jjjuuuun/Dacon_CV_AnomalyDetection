@@ -29,26 +29,20 @@ class SamplingImage():
 
     def imgSave(self, cls_arr, arr_dict):
         """"""
-        # os.chdir('../data/one_train/')
         for idx in range(len(cls_arr)):
-            key = list(arr_dict[cls_arr[idx]].keys())
-            value = list(arr_dict[cls_arr[idx]].values())
-            try:
-                if not os.path.exists('../data/one_train/' + cls_arr[idx]):
-                    os.makedirs('../data/one_train/' + cls_arr[idx])
-            except:
-                print(cls_arr[idx])
-                pass
-            for i in range(len(key)):
-                img_path = '../data/one_train/' + cls_arr[idx] + '/'
-                title = key[i]
-                img_name = value[i]
-                try:
-                    if not os.path.exists(img_path + title):
-                        os.makedirs(img_path + title)
-                except:
-                    print(title)
-                    pass
-                # print(self.path + img_name)
-                img = cv.imread(self.path + img_name)
-                cv.imwrite(img_path + title + '/' + title + '_' + img_name[:-4] + '.png', img)
+            img_dict = arr_dict[cls_arr[idx]]
+            key = list(img_dict.keys())
+            for state_key in key:
+                value = img_dict[state_key]
+                for i in range(len(value)):
+                    img_path = '../data/label_train/' + cls_arr[idx] + '/'
+                    title = state_key
+                    img_name = value[i]
+                    try:
+                        if not os.path.exists(img_path + title):
+                            os.makedirs(img_path + title)
+                    except:
+                        print(title)
+                        pass
+                    img = cv.imread(self.path + img_name)
+                    cv.imwrite(img_path + title + '/' + title + '_' + img_name[:-4] + '.png', img)

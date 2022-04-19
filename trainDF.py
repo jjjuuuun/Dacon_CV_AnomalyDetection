@@ -45,7 +45,7 @@ class TrainDF():
             for key, value in file_dict.items():
                 one_cls_dict = {}
                 for v_key, v_value in value.items():
-                    one_cls_dict[v_key] = v_value[0]
+                    one_cls_dict[v_key] = [v_value[0]]
                 one_file_dict[key] = one_cls_dict
             return one_file_dict
 
