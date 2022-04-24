@@ -46,4 +46,3 @@ si = SamplingImage('../data/train/')
 #     ax[i].set_title(titles[i])
 # plt.show()
 
-print(len(train_df))
