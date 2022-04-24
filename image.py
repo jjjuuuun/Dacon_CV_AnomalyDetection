@@ -27,7 +27,7 @@ class SamplingImage():
             plt.tight_layout()
             plt.show()
 
-    def imgSave(self, make_path, cls_arr, arr_dict):
+    def imgSave(self, make_path, cls_arr, arr_dict, colorful = True):
         """"""
         for idx in range(len(cls_arr)):
             img_dict = arr_dict[cls_arr[idx]]
@@ -44,5 +44,8 @@ class SamplingImage():
                     except:
                         print(title)
                         pass
-                    img = cv.imread(self.path + img_name)
+                    if colorful == True:
+                        img = cv.imread(self.path + img_name)
+                    else:
+                        img = cv.imread(self.path + img_name, 0)
                     cv.imwrite(img_path + title + '/' + title + '_' + img_name[:-4] + '.png', img)
