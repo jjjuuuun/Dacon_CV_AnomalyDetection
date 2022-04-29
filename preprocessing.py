@@ -3,7 +3,7 @@ import pandas as pd
 import cv2 as cv
 import matplotlib.pyplot as plt
 from image import SamplingImage
-#0429 커밋
+
 train_df = pd.read_csv('../data/train_df.csv')
 train_df.drop(['index'], axis = 1, inplace = True)
 
@@ -21,10 +21,11 @@ label_dict = td.col2Dict(label_col)
 img_file = td.file2Dict(cls_arr, True)
 one_img_file = td.file2Dict(cls_arr, False)
 
-si = SamplingImage('../data/train/')
+# 각자 폴더에 맞게 변경
+si = SamplingImage('../data/train/train/')
 
-# # 모든 image 파일 class별로 분류
-# si.imgSave('../data/label_train/', cls_arr, img_file)
+# 모든 image 파일 class별로 분류
+si.imgSave('../data/label_train/', cls_arr, img_file)
 
 # # class별로 하나씩 분류
 # si.imgSave('./label_train/', cls_arr, one_img_file)
