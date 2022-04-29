@@ -3,7 +3,7 @@ import pandas as pd
 import cv2 as cv
 import matplotlib.pyplot as plt
 from image import SamplingImage
-
+#0429 커밋
 train_df = pd.read_csv('../data/train_df.csv')
 train_df.drop(['index'], axis = 1, inplace = True)
 
